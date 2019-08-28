@@ -1,0 +1,203 @@
+vnote_backup_file_826537664 E:/TecDoc/hcr/功能.md
+# 1. 赛季通行证
+充值：
+
+```
+function t:_onSelectOnePay(index)
+    if self.btn_return and index then
+        self.last_click_index = index;
+        local isAdOpen = self:__CheckAdEnable();
+        if isAdOpen then
+            if index == 0 then
+                local cdTime = DataMgr.DataAD:GetRechargeAdLeftCdTime();
+                if cdTime > 0 then
+                    --ignore
+                else
+                    -- 播放广告 --
+                    Utils.ADUtils.ShowVideoAdByPos(Enum.AdUnit.Recharge);
+                end
+                return;
+            end
+        end
+
+        local tbx = TBX.pay;
+        local payInfo = tbx[index];
+        if payInfo then
+            local device_type = CS.DevConfig._GamePlatformLua;
+            if 0 == device_type then
+                SDKPay:Pay(payInfo.id, payInfo.name, payInfo.price);
+            else
+                SDKPay:Pay("jdhcr_" .. payInfo.id, payInfo.name, payInfo.price);
+            end
+        else
+            UI.ShowPopMsg("充值配置不存在");
+     end
+    end
+end
+
+```
+
+    UIPanelSeasonPass
+       Ref:UIPanelMallExcharge
+
+
+
+                elseif task.type == TYPE_PassScore then
+                    one:SetPassScore(task.amount);    
+                elseif task.type == TYPE_ActiveBox then
+                    one:SetActiveBox(task.amount);    
+                elseif task.type == TYPE_BattleBox then
+                    one:SetBattleBox(task.amount);      
+
+###### 单个和多个奖励
+单个：
+json.encode(data.general_reward): {"skin":"{\"id\":30131,\"expire\":1566974054}","skin_id":2091}
+列表：
+json.encode(data.general_reward): 
+{"skins":[{"num":6,"expire":-1,"id":10070}],"skin_shops":[2920]}
+
+
+## 1.1. todo
+红点
+时效
+UI
+预判
+
+### 1.1.1. redis
+
+--乱斗宝箱
+hset player-109595 battle_box_coin_data 2279999
+hset player-109595 battle_coin 100
+
+
+hset player-109128 battle_box_coin_data 2191010
+hset player-109128 battle_coin 100
+
+hset player-109128 battle_box_coin_data 181181010
+hget player-109128 battle_coin
+
+hget player_welfare2-109128 bp_r_2_1
+
+hget player_welfare2-109128 bp_r_1_1
+
+hset player_welfare2-109128 bp_r_1_1 0
+hset player_welfare2-109128 bp_r_1_2 0
+hset player_welfare2-109128 bp_r_1_3 0
+hset player_welfare2-109128 bp_r_1_4 0
+hset player_welfare2-109128 bp_r_2_1 1
+hset player_welfare2-109128 bp_r_2_2 0
+hset player_welfare2-109128 bp_r_2_3 0
+hset player_welfare2-109128 bp_r_2_4 0
+
+hset player-109595 battle_box_coin_data 2341010
+
+
+hmset player_welfare2-109128 bp_r_1_1 0 bp_r_1_2  0 bp_r_1_3  0 bp_r_1_4  0 bp_r_2_1 1  bp_r_2_2 0 bp_r_2_3 0 bp_r_2_4 0
+
+hmset player_welfare2-109595 bp_r_1_1 0 bp_r_1_2  0 bp_r_1_3  0 bp_r_1_4  0 bp_r_2_1 0  bp_r_2_2 0 bp_r_2_3 0 bp_r_2_4 0
+
+hmset player_welfare2-1095951 bp_r_1_1 0 bp_r_1_2  0 bp_r_1_3  0 bp_r_1_4  0 bp_r_2_1 0  bp_r_2_2 0 bp_r_2_3 0 bp_r_2_4 0
+
+hmset player_welfare2-109129 bp_r_1_1 0 bp_r_1_2  0 bp_r_1_3  0 bp_r_1_4  0 bp_r_2_1 0  bp_r_2_2 0 bp_r_2_3 0 bp_r_2_4 0
+
+hmset player_welfare2-109572 bp_r_1_1 0 bp_r_1_2  0 bp_r_1_3  0 bp_r_1_4  0 bp_r_2_1 0  bp_r_2_2 0 bp_r_2_3 0 bp_r_2_4 0
+
+--手机
+hmset player_welfare2-107347 bp_r_1_1 0 bp_r_1_2  0 bp_r_1_3  0 bp_r_1_4  0 bp_r_2_1 1  bp_r_2_2 0 bp_r_2_3 0 bp_r_2_4 0
+--乱斗宝箱
+hset player-107347 battle_box_coin_data 2260101
+
+hget player_welfare2-109128 ad_buy_score
+hset player_welfare2-109128 ad_buy_score 0
+
+hset player_welfare2-109239 ad_buy_score 0
+
+hset player_welfare2-109595 ad_buy_score 0
+
+--调整积分
+hset player-109128 pass_score 0
+
+hset player-109595 pass_score 12801
+
+hset player-109572 pass_score 12801
+
+hset player-109595 battle_box_coin_data 2260101
+
+
+hmset player_welfare2-109572 bp_r_1_1 0 bp_r_1_2  0 bp_r_1_3  0 bp_r_1_4  0 bp_r_2_1 0  bp_r_2_2 0 bp_r_2_3 0 bp_r_2_4 0
+hset player-109572 pass_score 129628
+
+
+hset player-109572 battle_coin_2 100
+
+UIPanelBagSeleItem
+## 1.2. 表格：
+
+### 1.2.1. 道具表中道具详细信息：
+
+通用奖励表： TBX.general_reward  （.type 3： 皮肤  1： 金币  2： 钻石 8： 服饰币 ）
+道具表： TBX.goods_map
+描述信息： TBX.goods_type-->goods_general
+                 TBX.goods_type-->goods_lottery
+
+--皮肤
+```
+TBX.general_reward
+    TBX.skinshop
+        TBX.skins
+
+```
+--道具
+
+
+![](_v_images/20190808094728110_1191.png)
+
+![](_v_images/20190807201752537_5034.png)
+
+## 1.3. Ref
+
+通用奖励：
+UIPanelCommonGotSomething
+ComponentCommonGotSomethingItem
+
+背包:
+UIPanelShoppedBag
+ShoppedBagItem
+
+设置回调：
+![](_v_images/20190807100454581_19533.png)
+![](_v_images/20190807100713238_9075.png)
+![](_v_images/20190807100854111_7547.png)
+## 1.4. 进包裹&通用领取界面
+
+```
+DataMgr.DataGoodsMgr:__Inner_GotGeneralRewardBatch(json.encode(kv.general_reward));
+DataMgr.DataActivityPush:ShowRewardDlg(kv.general_reward);
+```
+
+## 1.5. 滑动列表到指定位置
+
+```	
+//__value 0: 最左边 1: 最右边
+self:Timeout(0.1, function ()
+		if self.Content then
+			local __value = DataMgr.DataNewStarMgr:GetSignSliderValue();
+			local __sizeX = self.Content:GetSizeDeltaX();
+			self.ScrollView:SetHorizontalNormalizedPosition(__value);
+		end
+	end);
+end
+```
+
+
+# 2. general_reward对应关系
+
+TBX.general_reward.skinshop_id-->TBX.skinshop
+
+`TBX.skinshop.type_id`-->TBX.skins
+
+
+
+# 3. Q&A
+## 3.1. 新的组件UIComponentSeasonPass按钮点击不起作用
+A，Component 没require..

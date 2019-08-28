@@ -1,0 +1,46 @@
+
+# 消息
+
+## 热更消息id>10000
+
+## 消息处理类注册
+消息处理的函数是根据类特性自动注册的，由组件MessageDispatcherComponent负责
+![](_v_images/20190828163005565_25302.png)
+
+MessageDispatcherComponent寻找带MessageHandler标识的类并自动注册：
+
+![](_v_images/20190828165559152_17266.png)
+
+## 消息id-->消息类-->消息处理
+### id
+	public static partial class OuterOpcode
+	{
+		 public const ushort C2M_TestRequest = 101;
+		 public const ushort M2C_TestResponse = 102;
+		 public const ushort Actor_TransferRequest = 103;
+		 public const ushort Actor_TransferResponse = 104;
+		 public const ushort C2G_EnterMap = 105;
+		 public const ushort G2C_EnterMap = 106;
+		 public const ushort UnitInfo = 107;
+		 public const ushort M2C_CreateUnits = 108;
+		 public const ushort Frame_ClickMap = 109;
+		 public const ushort M2C_PathfindingResult = 110;
+		 public const ushort C2R_Ping = 111;
+		 public const ushort R2C_Ping = 112;
+		 public const ushort G2C_Test = 113;
+		 public const ushort C2M_Reload = 114;
+		 public const ushort M2C_Reload = 115;
+	}
+	`
+### 消息类 
+消息类分为两个部分a，b
+a放在OuterOpcode.cs里，用来自动识别消息反序列化类型和注册消息处理函数
+b放在OuterMessage.cs里，里面办好用工具生成好的protobuf定义（消息）
+a:
+![](_v_images/20190828152628710_25041.png)
+b:
+![](_v_images/20190828155641452_28750.png)
+### 消息处理
+
+# 数据结构
+## DoubleMap
