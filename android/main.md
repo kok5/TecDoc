@@ -1,0 +1,19 @@
+### Cleartext HTTP traffic to … not permitted
+[http://www.xrlmall.top/xrlblog/index.php/2019/08/07/cleartext-http-traffic-to-not-permitted/](http://www.xrlmall.top/xrlblog/index.php/2019/08/07/cleartext-http-traffic-to-not-permitted/)
+
+
+```Android
+Android下APP出现java.io.IOException: Cleartext HTTP traffic to dict.youdao.com not permitted，原因是Android高版本后限制了HTTP访问权限，如何解决？
+==>1. 改用https访问；
+==>2. targetSdkVersion降到27以下；
+==>3. 更改网络安全配置。
+前两种方法没什么好说的，看看方法三怎么处理吧！
+
+1.在res下创建一个xml文件夹，然后创建一个network_security_config.xml文件，文件内容如下：
+<?xml version="1.0" encoding="utf-8"?>  
+<network-security-config>        
+    <base-config cleartextTrafficPermitted="true" /> 
+</network-security-config>
+2.在AndroidManifest.xml 的application  标签下增加如下属性：
+ <application     ...      android:networkSecurityConfig="@xml/network_security_config"     ...         />
+```

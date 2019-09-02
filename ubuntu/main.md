@@ -1,0 +1,13 @@
+### 添加环境变量
+
+永久性改变
+
+打开~/.bashrc文件最末添加命令：
+PATH=$PATH:/home/workdir
+注意与上文中各式不同，没有双引号，重启OK。
+
+### 安装.net core2.2
+https://dotnet.microsoft.com/learn/dotnet/hello-world-tutorial/install
+
+### 查看端口
+netstat -taunp
