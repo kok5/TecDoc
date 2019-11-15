@@ -32,6 +32,15 @@
         },
         {
             "name": "android"
+        },
+        {
+            "name": "lua"
+        },
+        {
+            "name": "Q&A"
+        },
+        {
+            "name": "通用"
         }
     ],
     "tags": [

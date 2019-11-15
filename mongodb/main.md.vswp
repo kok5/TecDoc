@@ -3,22 +3,26 @@ vnote_backup_file_826537664 E:/TecDoc/mongodb/main.md
 ### 1. 安装
 sudo apt-get install mongodb
 
-### 2. 版本
+### 2. 放开ip访问
+![](_v_images/20190904181837351_20901.png)
+
+
+### 3. 版本
 windows: 4.2
 
 ubuntu: 2.6
     mongo登录
     db.version() 
 
-### 3. 查看是否运行
+### 4. 查看是否运行
 pgrep mongo -l
 
-### 4. 查看在哪
+### 5. 查看在哪
 locate mongo
 which mongo
 
 
-### 5. 连接mogo cloud & 环境变量
+### 6. 连接mogo cloud & 环境变量
 mongo "mongodb+srv://laoguaicluster-wplwx.mongodb.net/test" --username laoguai
 
 vi ~/.bashrc
@@ -26,7 +30,7 @@ vi ~/.bashrc
 连接云的客户端的路径：/home/mongodb-linux-x86_64-ubuntu1604-4.2.0/bin  
 客户端版本：MongoDB shell version v4.2.0
 
-### 6. 手动启动
+### 7. 手动启动
 ```CSharp
 先进入mongod所在的目录（/usr/bin/mongod），然后运行“./mongod --dbpath /var/lib/mongodb/ --logpath /var/log/mongodb/mongodb.log --logappend &”
 
@@ -39,7 +43,7 @@ vi ~/.bashrc
 &：表示程序在后台运行
 ```
 
-### 7. 常用操作
+### 8. 常用操作
 ```pytho
 关闭／启动
 　　sudo service mongodb stop 　　sudo service mongodb start

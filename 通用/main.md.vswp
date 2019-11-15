@@ -1,0 +1,4 @@
+vnote_backup_file_826537664 E:/TecDoc/通用/main.md
+## github导入本地git库 (帅！)
+git remote add origin https://github.com/kok5/logicprogram.git
+git push -u origin maste

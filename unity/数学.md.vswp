@@ -1,4 +1,0 @@
-vnote_backup_file_826537664 E:/TecDoc/unity/数学.md
-# 角度转向量
-
-Vector3 newVec = Quaternion.Eular(0,angle,0)*oriVec;

@@ -1,9 +1,34 @@
+## hotween
+C:\Users\用户名\AppData\Roaming\Unity\Asset Store
+![](_v_images/20191014095331725_6431.png =333x)
+
+### sequence的join函数可以尝试并联效果，要等并联中的最长动画结束才能播放后续的tweener
+
+
+## richtext
+<color=#ff0000>0</color>/0
+
+## 进度条
+001 UISlider
+
+--002 003是image
+002 if self.img_percent then
+                self.img_percent:SetSizeDeltaX(self.img_percent_size_x);
+            end
+            
+003 self.img_pass_progress_bar:SetFillAmount(__fill_amount);
+
 ## 多账号登陆
 ![](_v_images/20190821162831323_2772.png =902x)
 ![](_v_images/20190821162630668_23210.png =582x)
 
 ![](_v_images/20190822120138219_17483.png =892x)
 # 1. 换装
+获取皮肤 3850 （红旗）
+
+2400
+3200
+
 ## 1.1. 设置玩家皮肤
 ![](_v_images/20190820160024014_17786.png)
 
