@@ -41,6 +41,15 @@
         },
         {
             "name": "通用"
+        },
+        {
+            "name": "unity工具代码"
+        },
+        {
+            "name": "bugly"
+        },
+        {
+            "name": "UE4"
         }
     ],
     "tags": [
